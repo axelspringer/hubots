@@ -12,10 +12,13 @@
   "bin": {
     "hubot": "./bin/hubot"
   },
-  "author": {
-    "name": "Axel Springer SE",
-    "url": "https://github.com/axelspringer"
-  },
+  "author": "Axel Springer SE",
+  "contributors": [
+    {
+      "name": "Sebastian Döll",
+      "email": "sebastian.doell@axelspringer.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/axelspringer/hubots.git"
@@ -30,7 +33,6 @@
     "concurrently": "^3.5.1",
     "cross-env": "^5.1.1",
     "nodemon": "^1.12.1",
-    "tslib": "^1.8.0",
     "tslint": "^5.8.0",
     "tslint-config-prettier": "^1.6.0",
     "typescript": "^2.6.2"
@@ -49,6 +51,7 @@
     "koa-log": "^2.1.0",
     "koa-router": "^7.3.0",
     "loglevel": "^1.6.0",
+    "tslib": "^1.8.0",
     "optparse": "^1.0.5",
     "readline": "^1.3.0",
     "scoped-http-client": "^0.11.0",
