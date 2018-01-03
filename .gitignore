@@ -36,9 +36,6 @@ yarn-error.log
 dist
 !icon/
 
-# Doc #
-/doc
-
 # IDE #
 .idea/
 *.swp
