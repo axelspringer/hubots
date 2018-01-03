@@ -5,6 +5,8 @@
   "main": "dist/main.js",
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "build:docker": "docker build -t hubots .",
+    "help": "node node_modules/npm-scripts-help",
     "server:dev": "./node_modules/.bin/nodemon ./dist/main.js",
     "start": "npm run build && concurrently \"npm run watch\" \"npm run server:dev\"",
     "watch": "tsc --watch -p tsconfig.json"
@@ -33,6 +35,8 @@
     "concurrently": "^3.5.1",
     "cross-env": "^5.1.1",
     "nodemon": "^1.12.1",
+    "npm-run-help": "^1.1.0",
+    "npm-scripts-help": "^0.7.0",
     "tslint": "^5.8.0",
     "tslint-config-prettier": "^1.6.0",
     "typescript": "^2.6.2"
