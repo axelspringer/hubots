@@ -7,6 +7,7 @@ import { Robot } from '../robot'
 import { Adapter } from '../adapter'
 import { Envelope, TextMessage } from '../message'
 
+// history
 const historySize = process.env.HUBOT_SHELL_HISTSIZE != null ? parseInt(process.env.HUBOT_SHELL_HISTSIZE) : 1024
 const historyPath = '.hubot_history'
 
