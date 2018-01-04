@@ -1,0 +1,40 @@
+{
+  "name": "hubot-slack",
+  "version": "1.0.0",
+  "description": "A Slack adapter for hubot",
+  "main": "dist/slack.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json --outDir ./scripts",
+    "help": "node node_modules/npm-scripts-help",
+    "start": "npm run watch",
+    "watch": "tsc --watch -p tsconfig.json --outDir ./scripts"
+  },
+  "keywords": [
+    "hubot",
+    "adapter",
+    "slack"
+  ],
+  "author": "Axel Springer SE",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/axelspringer/hubots.git"
+  },
+  "bugs": {
+    "url": "https://github.com/axelspringer/hubots/issues"
+  },
+  "dependencies": {
+    "@slack/client": "^3.4.0",
+    "chai": "^3.5.0",
+    "lodash": "^3.10.1"
+  },
+  "devDependencies": {
+    "@types/node": "^8.5.5"
+  },
+  "contributors": [
+    {
+      "name": "Sebastian Döll",
+      "email": "sebastian.doell@axelspringer.com"
+    }
+  ]
+}
