@@ -11,7 +11,7 @@ Hubots is setup as a mono repo with [Lerna](https://github.com/lerna/lerna). The
 
 * [Hubot](https://github.com/axelspringer/hubots/tree/master/packages/hubots#README)
 * [Hubot-Slack](https://github.com/axelspringer/mango/tree/master/packages/hubot-slack#README)
-* [Hubo-Howdy](https://github.com/axelspringer/mango/tree/master/packages/hubot-howdy#README)
+* [Hubot-Howdy](https://github.com/axelspringer/mango/tree/master/packages/hubot-howdy#README)
 
 ## Getting Started
 
