@@ -9,8 +9,8 @@
     "docs": "npm run typedoc -- --options typedoc.js --exclude '**/*.spec.ts' ./src/",
     "help": "node node_modules/npm-scripts-help",
     "typedoc": "typedoc",
-    "server:dev": "./node_modules/.bin/nodemon ./dist/main.js",
-    "start": "npm run build && concurrently \"npm run watch\" \"npm run server:dev\"",
+    "server:dev": "./node_modules/.bin/nodemon --watch dist",
+    "start": "npm run build && concurrently --raw \"npm run watch\" \"npm run server:dev\"",
     "watch": "tsc --watch -p tsconfig.json --outDir ./dist"
   },
   "bin": {
