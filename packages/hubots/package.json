@@ -4,14 +4,14 @@
   "description": "A TypeScript flavor version of GitHubs famous and beloved Hubot",
   "main": "dist/main.js",
   "scripts": {
-    "build": "tsc -p ../../tsconfig.json --outDir ./dist",
+    "build": "tsc -p tsconfig.json --outDir ./dist",
     "build:docker": "docker build -t hubots .",
     "docs": "npm run typedoc -- --options typedoc.js --exclude '**/*.spec.ts' ./src/",
     "help": "node node_modules/npm-scripts-help",
     "typedoc": "typedoc",
     "server:dev": "./node_modules/.bin/nodemon ./dist/main.js",
     "start": "npm run build && concurrently \"npm run watch\" \"npm run server:dev\"",
-    "watch": "tsc --watch -p ../../tsconfig.json --outDir ./dist"
+    "watch": "tsc --watch -p tsconfig.json --outDir ./dist"
   },
   "bin": {
     "hubot": "./bin/hubot"
@@ -46,13 +46,11 @@
   },
   "dependencies": {
     "@koa/cors": "^2.2.1",
-    "@types/chalk": "^2.2.0",
     "chalk": "^2.3.0",
     "cline": "^0.8.2",
-    "coffee-script": "^1.12.7",
+    "coffeescript": "^1.12.7",
     "fs-extra": "^4.0.2",
     "hubot-forecastio": "^1.1.2",
-    "hubot-scripts": "^2.17.2",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
     "koa-log": "^2.1.0",
@@ -63,7 +61,6 @@
     "scoped-http-client": "^0.11.0",
     "stream": "0.0.2",
     "tslib": "^1.8.0",
-    "typescript": "^2.6.2",
     "yargs": "^10.0.3"
   }
 }

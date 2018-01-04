@@ -7,7 +7,6 @@ import { loadScripts } from './helpers'
 const options = parseArgs()
 const hubot = loadBot(undefined, options.adapter, !options.disableHttpd, options.name, options.alias)
 
-
 // connect the adapters to a hubot
 hubot.adapter.once('connected', () => loadScripts(options, hubot))
 hubot.run()

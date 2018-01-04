@@ -1,0 +1,39 @@
+{
+  "name": "@axelspringer/hubot-howdy",
+  "description": "A Hubot Howdy Example",
+  "version": "1.0.0",
+  "author": "Axel Springer SE",
+  "main": "scripts/main.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json --outDir ./scripts",
+    "help": "node node_modules/npm-scripts-help",
+    "start": "npm run watch",
+    "watch": "tsc --watch -p tsconfig.json --outDir ./scripts"
+  },
+  "contributors": [
+    {
+      "name": "Sebastian Döll",
+      "email": "sebastian@katallaxie.me"
+    }
+  ],
+  "devDependencies": {
+    "@types/node": "^8.0.53",
+    "concurrently": "^3.5.1",
+    "cross-env": "^5.1.3",
+    "npm-run-help": "^1.1.0",
+    "npm-scripts-help": "^0.7.0",
+    "typescript": "^2.6.2"
+  },
+  "license": "MIT",
+  "keywords": [
+    "hubot",
+    "hubot-scripts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/axelspringer/hubots"
+  },
+  "bugs": {
+    "url": "https://github.com/axelspringer/hubots"
+  }
+}

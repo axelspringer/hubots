@@ -5,7 +5,7 @@
 ### A TypeScript flavor version of GitHubs famous and beloved Hubot. With some customizations and some more adapters.
 ## Mono Repo
 
-Hubots is setup as a mono repo with [Lerna](https://github.com/lerna/lerna). It includes the bot itself, as the adapters and customizations to it.
+Hubots is setup as a mono repo with [Lerna](https://github.com/lerna/lerna). The repo includes the bot itself, also the adapter and some customizations.
 
 ## Packages
 
