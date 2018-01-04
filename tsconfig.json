@@ -19,8 +19,7 @@
       "dom",
       "es6",
       "es7"
-    ],
-    "outDir": "./dist"
+    ]
   },
   "exclude": [
     "node_modules",

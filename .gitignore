@@ -27,6 +27,7 @@ Thumbs.db
 node_modules
 npm-debug.log
 npm-debug.log.*
+lerna-debug.log
 yarn-error.log
 .hubot_history
 
