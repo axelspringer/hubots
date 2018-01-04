@@ -1,4 +1,4 @@
-class Pitti {
+class Howdy {
   constructor() { }
 
   register = (robot: any) => {
@@ -12,4 +12,4 @@ class Pitti {
   }
 }
 
-export = new Pitti().register
+export = new Howdy().register
