@@ -347,18 +347,6 @@ export class Robot extends EventEmitter {
   }
 
   /**
-   * Load script specified in the `hubot-scripts.json` file.
-   * @param filePath A string path to the hubot-scripts files.
-   * @param scripts An array of scripts to load.
-   */
-  public async loadHubotScripts(filePath: string, scripts: string[]): Promise<void> {
-    this.logger.debug(`Loading hubot-scripts from ${filePath}`)
-    for (let script of scripts) {
-      await this.loadFile(filePath, script)
-    }
-  }
-
-  /**
    * Load scripts from packages specified in the `external-scripts.json` file.
    * @param packages An array of packages containing hubot scripts to load.
    */
@@ -516,7 +504,7 @@ export class Robot extends EventEmitter {
       if (adapterName === 'shell') {
         path = `${this.adapterPath}/${adapterName}`
       } else {
-        path = `hubot-${adapterName}`
+        path = `${adapterName}`
       }
       this.adapter = require(path).use(this)
     } catch (e) {

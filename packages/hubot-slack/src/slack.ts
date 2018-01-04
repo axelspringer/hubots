@@ -1,22 +1,17 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
- */
 import { SlackBot } from './bot'
+import { Options } from './options'
 import * as process from 'process'
+import { Robot, Adapter } from '@axelspringer/hubots'
 
-function use(robot) {
-  const options = { token: process.env.HUBOT_SLACK_TOKEN };
-  try {
-    options.rtm = JSON.parse(process.env.HUBOT_SLACK_RTM_CLIENT_OPTS);
-  } catch (error) { }
-  try {
-    options.rtmStart = JSON.parse(process.env.HUBOT_SLACK_RTM_START_OPTS);
-  } catch (error1) { }
-  return new SlackBot(robot, options);
-}
+export function use(robot: Robot): Adapter {
+  let options = new Options(process.env.HUBOT_SLACK_TOKEN)
 
-export {
-  use
+  try {
+    options.rtm = JSON.parse(process.env.HUBOT_SLACK_RTM_CLIENT_OPTS || JSON.stringify({}))
+    options.rtmStart = JSON.parse(process.env.HUBOT_SLACK_RTM_START_OPTS || JSON.stringify({}))
+  } catch (error) {
+    console.error(error)
+  }
+
+  return new SlackBot(robot, options)
 }

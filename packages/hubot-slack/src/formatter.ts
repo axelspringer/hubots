@@ -4,21 +4,15 @@
  * DS102: Remove unnecessary code created because of implicit returns
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
-const MESSAGE_RESERVED_KEYWORDS = ['channel', 'group', 'everyone', 'here'];
+const MESSAGE_RESERVED_KEYWORDS = ['channel', 'group', 'everyone', 'here']
 
 
 // https://api.slack.com/docs/formatting
 export class SlackFormatter {
 
-  constructor(dataStore) {
-    this.dataStore = dataStore;
-  }
+  constructor(public dataStore) { }
 
-
-  /*
-  Formats links and ids
-  */
-  links(text) {
+  public links(text) {
     const regex = new RegExp(`\
 <\
 ([@#!])?\
@@ -27,74 +21,74 @@ export class SlackFormatter {
 ([^>]+)\
 )?\
 >\
-`, 'g');
+`, 'g')
 
     text = text.replace(regex, (m, type, link, label) => {
       switch (type) {
 
         case '@':
-          if (label) { return `@${label}`; }
-          var user = this.dataStore.getUserById(link);
+          if (label) { return `@${label}` }
+          var user = this.dataStore.getUserById(link)
           if (user) {
-            return `@${user.name}`;
+            return `@${user.name}`
           }
-          break;
+          break
 
         case '#':
-          if (label) { return `\#${label}`; }
-          var channel = this.dataStore.getChannelById(link);
+          if (label) { return `\#${label}` }
+          var channel = this.dataStore.getChannelById(link)
           if (channel) {
-            return `\#${channel.name}`;
+            return `\#${channel.name}`
           }
-          break;
+          break
 
         case '!':
           if (Array.from(MESSAGE_RESERVED_KEYWORDS).includes(link)) {
-            return `@${link}`;
+            return `@${link}`
           } else if (label) {
-            return label;
+            return label
           }
-          return m;
+          return m
 
         default:
-          link = link.replace(/^mailto:/, '');
+          link = link.replace(/^mailto:/, '')
           if (label && (-1 === link.indexOf(label))) {
-            return `${label} (${link})`;
+            return `${label} (${link})`
           } else {
-            return link;
+            return link
           }
       }
-    });
+    })
 
-    text = text.replace(/&lt;/g, '<');
-    text = text.replace(/&gt;/g, '>');
-    return text = text.replace(/&amp;/g, '&');
+    text = text.replace(/&lt/g, '<')
+    text = text.replace(/&gt/g, '>')
+    return text = text.replace(/&amp/g, '&')
   }
 
 
   /*
   Flattens message text and attachments into a multi-line string
   */
-  flatten(message) {
-    const text = [];
+  public flatten(message) {
+    const text = []
 
     // basic text messages
-    if (message.text) { text.push(message.text); }
+    if (message.text) { text.push(message.text) }
 
     // append all attachments
     for (let attachment of Array.from(message.attachments || [])) {
-      text.push(attachment.fallback);
+      text.push(attachment['fallback'])
     }
 
     // flatten array
-    return text.join('\n');
+    return text.join('\n')
   }
 
 
   /*
   Formats an incoming Slack message
   */
-  incoming(message) {
-    return this.links(this.flatten(message));
+  public incoming(message) {
+    return this.links(this.flatten(message))
   }
 }
