@@ -1,12 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS101: Remove unnecessary use of Array.from
- * DS102: Remove unnecessary code created because of implicit returns
- * DS103: Rewrite code to no longer use __guard__
- * DS206: Consider reworking classes to avoid initClass
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
- */
 import { RtmClient, WebClient } from '@slack/client'
 import { SlackFormatter } from './formatter'
 import { Robot } from '@axelspringer/hubots'
@@ -43,17 +34,11 @@ export class SlackClient {
     this.returnRawText = !options.noRawText
   }
 
-  /*
-  Open connection to the Slack RTM API
-  */
   public connect() {
     this.robot.logger.debug(`slack rtm start with options: ${JSON.stringify(this.rtmStartOpts)}`)
     return this.rtm.start(this.rtmStartOpts)
   }
 
-  /*
-  Slack RTM message events wrapper
-  */
   public messageWrapper(message) {
     if (this.messageHandler) {
       const { user, channel, bot_id } = message
@@ -76,18 +61,10 @@ export class SlackClient {
     }
   }
 
-
-  /*
-  Set message handler
-  */
   onMessage(callback) {
     if (this.messageHandler !== callback) { return this.messageHandler = callback }
   }
 
-  /*
-  Attach event handlers to the RTM stream
-  Deprecated: This API is being removed without a replacement in the next major version.
-  */
   on(type, callback) {
     this.robot.logger.warning('SlackClient#on() is a deprecated method and will be removed in the next major version ' +
       'of hubot-slack. See documentaiton for a migration guide to find alternatives.'
@@ -95,19 +72,12 @@ export class SlackClient {
     return this.rtm.on(type, callback)
   }
 
-  /*
-  Disconnect from the Slack RTM API
-  */
   disconnect() {
     this.rtm.disconnect()
     // NOTE: removal of event listeners possibly does not belong in disconnect, because they are not added in connect.
     return this.rtm.removeAllListeners()
   }
 
-
-  /*
-  Set a channel's topic
-  */
   setTopic(id, topic) {
     const channel = this.rtm.dataStore.getChannelGroupOrDMById(id)
     this.robot.logger.debug(topic)
@@ -125,10 +95,6 @@ export class SlackClient {
     }
   }
 
-
-  /*
-  Send a message to Slack using the best client for the message type
-  */
   send(envelope, message) {
     let room
     if (envelope.room) {

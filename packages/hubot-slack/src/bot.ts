@@ -1,32 +1,9 @@
-/*
- * decaffeinate suggestions:
- * DS001: Remove Babel/TypeScript constructor workaround
- * DS101: Remove unnecessary use of Array.from
- * DS102: Remove unnecessary code created because of implicit returns
- * DS104: Avoid inline assignments
- * DS204: Change includes calls to have a more natural evaluation order
- * DS207: Consider shorter variations of null checks
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
- */
 import { Adapter, TextMessage, EnterMessage, LeaveMessage, TopicMessage, CatchAllMessage, Robot } from '@axelspringer/hubots'
-
 import { SlackClient } from './client'
 import { ReactionMessage } from './reaction-message'
 import { SlackTextMessage } from './slack-message'
 import { Options } from './options'
 
-// Public: Adds a Listener for ReactionMessages with the provided matcher,
-// options, and callback
-//
-// matcher  - A Function that determines whether to call the callback.
-//            Expected to return a truthy value if the callback should be
-//            executed (optional).
-// options  - An Object of additional parameters keyed on extension name
-//            (optional).
-// callback - A Function that is called with a Response object if the
-//            matcher function returns true.
-//
-// Returns nothing.
 Robot.prototype.react = function (matcher, options, callback) {
   let matchReaction = msg => msg instanceof ReactionMessage
 
@@ -54,33 +31,22 @@ export class SlackBot extends Adapter {
     super(robot)
     this.client = new SlackClient(robot, options)
   }
-
-  /*
-  Slackbot loads full user list on the first brain load
-  QUESTION: why do brain adapters trigger a brain 'loaded' event each time a key
-  is set?
-  */
   public setIsLoaded(isLoaded) {
     this.isLoaded = isLoaded
   }
 
-  /*
-  Slackbot initialization
-  */
   public run() {
-
-
     // let needle
     // if (!this.options.token) { return this.robot.logger.error("No service token provided to Hubot") }
     // if ((needle = this.options.token.substring(0, 5), !['xoxb-', 'xoxp-'].includes(needle))) { return this.robot.logger.error("Invalid service token provided, please follow the upgrade instructions") }
 
     // Setup client event handlers
-    this.client.rtm.on('open', this.open.bind(this))
+    this.client.rtm.on('authenticated', this.authenticated.bind(this))
     this.client.rtm.on('close', this.close.bind(this))
     this.client.rtm.on('error', this.error.bind(this))
+    this.client.rtm.on('open', this.open.bind(this))
     this.client.rtm.on('reaction_added', this.reaction.bind(this))
     this.client.rtm.on('reaction_removed', this.reaction.bind(this))
-    this.client.rtm.on('authenticated', this.authenticated.bind(this))
     this.client.rtm.on('user_change', this.userChange.bind(this))
 
     this.client.loadUsers(this.loadUsers.bind(this))
@@ -98,10 +64,6 @@ export class SlackBot extends Adapter {
     return this.client.connect()
   }
 
-
-  /*
-  Slack client has opened the connection
-  */
   public open(): void {
     this.robot.logger.info('Slack client now connected')
 
@@ -109,24 +71,8 @@ export class SlackBot extends Adapter {
     return this['emit']('connected')
   }
 
-
-  /*
-  Slack client has authenticated
-  */
   public authenticated(identity) {
     const { self, team } = identity
-
-    // console.log(identity)
-    // let team
-    // ({ self: this.self, team } = identity)
-
-    // // Find out bot_id
-    // for (let user of Array.from(identity.users)) {
-    //   if (user['id'] === this.self.id) {
-    //     this.self.bot_id = user['profile'].bot_id
-    //     break
-    //   }
-    // }
 
     // Provide our name to Hubot
     this.robot.name = self.name
@@ -135,10 +81,6 @@ export class SlackBot extends Adapter {
     return this.robot.logger.info(`Logged in as ${this.robot.name} of ${team.name}`)
   }
 
-
-  /*
-  Slack client has closed the connection
-  */
   public close() {
     // NOTE: not confident that @options.autoReconnect has intended effect as currently implemented
     if (this.options.autoReconnect) {
@@ -150,10 +92,6 @@ export class SlackBot extends Adapter {
     }
   }
 
-
-  /*
-  Slack client received an error
-  */
   public error(error) {
     if (error.code === -1) {
       return this.robot.logger.warning(`Received rate limiting error ${JSON.stringify(error)}`)
@@ -162,10 +100,6 @@ export class SlackBot extends Adapter {
     return this.robot.emit('error', error)
   }
 
-
-  /*
-  Hubot is sending a message to Slack
-  */
   public send(envelope, ...messages) {
     const sent_messages = []
     for (let message of Array.from(messages)) {
@@ -176,10 +110,6 @@ export class SlackBot extends Adapter {
     return sent_messages
   }
 
-
-  /*
-  Hubot is replying to a Slack message
-  */
   public reply(envelope, ...messages) {
     const sent_messages = []
     for (let message of Array.from(messages)) {
@@ -192,20 +122,12 @@ export class SlackBot extends Adapter {
     return sent_messages
   }
 
-
-  /*
-  Hubot is setting the Slack channel topic
-  */
   public setTopic(envelope, ...strings) {
     if (envelope.room[0] === 'D') { return } // ignore DMs
 
     return this.client.setTopic(envelope.room, strings.join("\n"))
   }
 
-
-  /*
-  Message received from Slack
-  */
   public message(message) {
     let textMessage
     let { text, rawText, returnRawText, user, channel, subtype, topic, bot } = message

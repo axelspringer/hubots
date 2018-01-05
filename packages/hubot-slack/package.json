@@ -1,7 +1,7 @@
 {
   "name": "@axelspringer/hubot-slack",
   "version": "1.0.0",
-  "description": "A Slack adapter for hubot",
+  "description": "A Slack adapter for Hubots, the Hubot flavor of Axel Springer.",
   "main": "dist/slack.js",
   "scripts": {
     "build": "tsc -p tsconfig.json --outDir ./dist",
