@@ -9,6 +9,9 @@
     "start": "npm run watch",
     "watch": "tsc --watch -p tsconfig.json --outDir ./dist"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "hubot",
     "adapter",

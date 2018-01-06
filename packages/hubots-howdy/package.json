@@ -10,6 +10,9 @@
     "start": "npm run watch",
     "watch": "tsc --watch -p tsconfig.json --outDir ./scripts"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "contributors": [
     {
       "name": "Sebastian Döll",

@@ -13,6 +13,9 @@
     "start": "npm run build && concurrently --raw \"npm run watch\" \"npm run server:dev\"",
     "watch": "tsc --watch -p tsconfig.json --outDir ./dist"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
     "hubot": "./bin/hubot"
   },
