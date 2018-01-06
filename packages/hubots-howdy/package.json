@@ -1,5 +1,5 @@
 {
-  "name": "@axelspringer/hubot-howdy",
+  "name": "@axelspringer/hubots-howdy",
   "description": "A Hubot Howdy Example",
   "version": "1.0.0",
   "author": "Axel Springer SE",
@@ -16,13 +16,11 @@
       "email": "sebastian@katallaxie.me"
     }
   ],
+  "dependencies": {
+    "@axelspringer/hubots": "^1.0.1"
+  },
   "devDependencies": {
-    "@types/node": "^8.0.53",
-    "concurrently": "^3.5.1",
-    "cross-env": "^5.1.3",
-    "npm-run-help": "^1.1.0",
-    "npm-scripts-help": "^0.7.0",
-    "typescript": "^2.6.2"
+    "@types/node": "^8.0.53"
   },
   "license": "MIT",
   "keywords": [
