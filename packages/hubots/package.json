@@ -1,6 +1,6 @@
 {
   "name": "@axelspringer/hubots",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A TypeScript flavor version of GitHubs famous and beloved Hubot",
   "main": "dist/main.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "access": "public"
   },
   "bin": {
-    "hubot": "./bin/hubot"
+    "hubots": "./bin/hubots"
   },
   "author": "Axel Springer SE",
   "contributors": [
