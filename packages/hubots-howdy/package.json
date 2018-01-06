@@ -1,7 +1,7 @@
 {
   "name": "@axelspringer/hubots-howdy",
   "description": "A Hubot Howdy Example",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "author": "Axel Springer SE",
   "main": "scripts/main.js",
   "scripts": {
@@ -17,7 +17,7 @@
     }
   ],
   "dependencies": {
-    "@axelspringer/hubots": "^1.0.1"
+    "@axelspringer/hubots": "^1.0.2"
   },
   "devDependencies": {
     "@types/node": "^8.0.53"

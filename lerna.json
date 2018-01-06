@@ -3,5 +3,10 @@
   "packages": [
     "packages/*"
   ],
-  "version": "0.0.1"
+  "command": {
+    "publish": {
+      "message": "~ releasing %s"
+    }
+  },
+  "version": "1.0.2"
 }
