@@ -20,7 +20,7 @@
 npm i @axelspringer/hubots -g
 
 # Start hubot
-hubot
+hubots
 ```
 
 ## Environment Variables

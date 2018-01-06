@@ -3,31 +3,27 @@ git:
 sudo: false
 language: node_js
 node_js:
- - 'node'
- - '8'
- - '7'
- - '6'
-
+- node
+- '8'
+- '7'
+- '6'
 notifications:
   email: false
-
+  slack:
+    secure: dAaTo5JUUvJfOzeL6w1rPO6A0GKvuTkjhYA6EoZZvmxeUoIoAotQiRJa5/w4l4ljkgRVvRzMjZzJ08RpoB2t4Y/a4lIFrNww9biQCR4/HUK1cH3Js8W4Vb6NLS5xj5gw3DB8kmAsrEGShBR9rTM4pEBw3dbVZPpRygKifLJH8fTqp/AVV1f8EpxznAMQ33pdy9f0bVGScekwk+O07cCZQXbnKkyw48Wj+qQtqVcWxKI0TnjvNmoYZRFzLQcdJP68rUS8p6EbOi2dXatbEJo2PrSs+Mqj0S3Y3WYoHBh9LbY45IxXGKWeaUZGMxcgJgrW6n9+9dSahz9Fkn8JPeZVa07nd0OAXp+G3WOXev0/HOGhTz0HpJapf5r95f8E2i9HbMEWq/nvVlYlOWN2TVjy5UIVaZSpGAZFP385TtBp1aW8/1QPhLhxsqhcGiXl68VIj88UCgphp6J9l4lsclCQyUMpGzv5vHOopUdY1M7p+h0ibAYaekiPAvmm5zIghHgwAJr8/9YCAZeMBTR9kL6+G9S1bkkEUtd185jpb49jhrB0Xcc+8cf4Zis8YTEA4TzIQQS2eq0cxmM/a/yhFyjarq3e1tftXCv0MTgFkaQV+kpD6XTet2XQlnyyZctZevnPNauQ5cOey56v4bK+iZp9+E4tDO1L8y1dOKGHJT7t/Y4=
 cache:
   directories:
-    - node_modules
-    - $HOME/.npm
-
+  - node_modules
+  - "$HOME/.npm"
 before_install:
-  - if [[ `node -v` == v6* ]]; then npm i -g npm@latest-4; fi
-  - if [[ `node -v` == v8* ]]; then npm i -g npm@latest-5; fi
-  - npm i
-
+- if [[ `node -v` == v6* ]]; then npm i -g npm@latest-4; fi
+- if [[ `node -v` == v8* ]]; then npm i -g npm@latest-5; fi
+- npm i
 script:
-  - npm run build
-  - npm run test
-
+- npm run build
+- npm run test
 env:
   global:
-    - HUBOT_PORT=8080
-
+  - HUBOT_PORT=8080
 matrix:
   fast_finish: true
