@@ -1,6 +1,6 @@
 {
   "name": "@axelspringer/hubots",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A TypeScript flavor version of GitHubs famous and beloved Hubot",
   "main": "dist/main.js",
   "scripts": {
