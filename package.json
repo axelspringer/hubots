@@ -15,6 +15,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "lerna bootstrap",
+    "publish": "lerna publish --yes",
     "build": "lerna run build",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
