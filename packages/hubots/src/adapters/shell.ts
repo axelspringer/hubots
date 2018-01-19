@@ -8,8 +8,8 @@ import { Adapter } from '../adapter'
 import { Envelope, TextMessage } from '../message'
 
 // history
-const historySize = process.env.HUBOT_SHELL_HISTSIZE != null ? parseInt(process.env.HUBOT_SHELL_HISTSIZE) : 1024
-const historyPath = '.hubot_history'
+const historySize = process.env.HUBOTS_SHELL_HISTSIZE != null ? parseInt(process.env.HUBOTS_SHELL_HISTSIZE) : 1024
+const historyPath = '.hubots_history'
 
 class Shell extends Adapter {
   private cli: any
@@ -51,9 +51,9 @@ class Shell extends Adapter {
     this.cli = cline()
 
     this.cli.command('*', input => {
-      let userId = process.env.HUBOT_SHELL_USER_ID || '1'
+      let userId = process.env.HUBOTS_SHELL_USER_ID || '1'
 
-      const userName = process.env.HUBOT_SHELL_USER_NAME || 'Shell'
+      const userName = process.env.HUBOTS_SHELL_USER_NAME || 'Shell'
       const user = this.robot.brain.userForId(userId, { name: userName, room: 'Shell' })
       this.receive(new TextMessage(user, input, 'messageId'))
     })

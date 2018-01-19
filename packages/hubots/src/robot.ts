@@ -105,7 +105,7 @@ export class Robot extends EventEmitter {
     super()
 
     this.logger = log
-    let logLevel: string = process.env.HUBOT_LOG_LEVEL || process.env.TSBOT_LOG_LEVEL || 'info'
+    let logLevel: string = process.env.HUBOTS_LOG_LEVEL || 'info'
     this.logger.setLevel(logLevel)
 
     this.brain = new Brain(this)
@@ -442,16 +442,12 @@ export class Robot extends EventEmitter {
    * Setup the Express server's defaults
    */
   private setupHttpd(): void {
-    // let user = process.env.EXPRESS_USER
-    // let pass = process.env.EXPRESS_PASSWORD
-    // let stat = process.env.EXPRESS_STATIC
-    let port = process.env.EXPRESS_PORT || process.env.PORT || 8080
-    // let address = process.env.EXPRESS_BIND_ADDRESS || process.env.BIND_ADDRESS || '0.0.0.0'
+    let port = process.env.PORT || 8080
 
     // setup koa
     const app = new koa()
     app.use((ctx: koa.Context, next) => {
-      ctx.res.setHeader('X-Powered-By', `tsbot/${this.name}`)
+      ctx.res.setHeader('X-Powered-By', `hubots/${this.name}`)
       next()
     })
     // if (user && pass) {
@@ -506,6 +502,7 @@ export class Robot extends EventEmitter {
       } else {
         path = `${adapterName}`
       }
+
       this.adapter = require(path).use(this)
     } catch (e) {
       this.logger.error(`Cannot load adapter ${adapterName} - ${e}`)

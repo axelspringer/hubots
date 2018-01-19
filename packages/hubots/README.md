@@ -22,26 +22,25 @@ npm i @axelspringer/hubots -g
 # Start hubot
 hubots
 ```
-
 ## Environment Variables
 
-### `HUBOT_SHELL_HISTSIZE`
+### `HUBOTS_SHELL_HISTSIZE`
 
-Sets the size of the `.hubot_history` and defaults to `1024`.
+Sets the size of the `.hubots_history` and defaults to `1024`.
 
-### `HUBOT_LOG_LEVEL`
+### `HUBOTS_LOG_LEVEL`
 
 Sets the log level of Hubot and defaults to `info`.
 
-### `HUBOT_SHELL_USER_NAME`
+### `HUBOTS_SHELL_USER_NAME`
 
 Sets the shell username and defaults to `Shell`.
 
-### `HUBOT_SHELL_USER_ID`
+### `HUBOTS_SHELL_USER_ID`
 
 Sets the shell user id and defaults to `1`.
 
-### `PORT`
+### `HUBOTS_PORT`
 
 Sets the port of the middleware and defaults to `8080`
 
