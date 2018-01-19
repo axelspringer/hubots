@@ -1,6 +1,6 @@
 {
   "name": "@axelspringer/hubots-slack",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A Slack adapter for Hubots, the Hubot flavor of Axel Springer.",
   "main": "dist/slack.js",
   "scripts": {
@@ -26,14 +26,17 @@
   "bugs": {
     "url": "https://github.com/axelspringer/hubots/issues"
   },
+  "peerDependencies": {
+    "@axelspringer/hubots": "^1.0.9"
+  },
   "dependencies": {
-    "@axelspringer/hubots": "^1.0.8",
     "@slack/client": "^3.4.0",
     "chai": "^3.5.0",
     "lodash": "^3.10.1",
     "tslib": "^1.8.1"
   },
   "devDependencies": {
+    "@axelspringer/hubots": "^1.0.9",
     "@types/node": "^8.0.53"
   },
   "contributors": [
