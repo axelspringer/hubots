@@ -1,11 +1,11 @@
 {
   "name": "@axelspringer/hubots",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A TypeScript flavor version of GitHubs famous and beloved Hubot",
   "main": "dist/main.js",
   "scripts": {
     "build": "tsc -p tsconfig.json --outDir ./dist",
-    "build:docker": "docker build -t hubots .",
+    "build:docker": "docker build -t axelspringer/hubots .",
     "docs": "npm run typedoc -- --options typedoc.js --exclude '**/*.spec.ts' ./src/",
     "help": "node node_modules/npm-scripts-help",
     "typedoc": "typedoc",
