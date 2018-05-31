@@ -30,14 +30,14 @@
     "@axelspringer/hubots": "^1.0.11"
   },
   "dependencies": {
-    "@slack/client": "^3.4.0",
-    "chai": "^3.5.0",
-    "lodash": "^3.10.1",
-    "tslib": "^1.8.1"
+    "@slack/client": "^3.16.0",
+    "chai": "^4.1.2",
+    "lodash": "^4.17.10",
+    "tslib": "^1.9.2"
   },
   "devDependencies": {
     "@axelspringer/hubots": "^1.0.11",
-    "@types/node": "^8.0.53"
+    "@types/node": "^8.10.17"
   },
   "contributors": [
     {
